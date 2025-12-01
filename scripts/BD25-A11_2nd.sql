@@ -1,0 +1,60 @@
+USE ULHT_DB25;
+
+SET IMPLICIT_TRANSACTIONS ON;
+
+SELECT CASE transaction_isolation_level	
+			WHEN 0 THEN 'Unspecified'  							
+			WHEN 1 THEN 'ReadUncommitted'  						
+			WHEN 2 THEN 'ReadCommitted'  						
+			WHEN 3 THEN 'Repeatable Read'  							
+			WHEN 4 THEN 'Serializable'  						
+			WHEN 5 THEN 'Snapshot' 
+		END AS TRANSACTION_ISOLATION_LEVEL  
+	FROM sys.dm_exec_sessions  								
+	WHERE session_id = @@SPID;
+
+-- 	1. READ UNCOMMITTED											
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+
+SELECT * FROM Scott.DEPT d;
+
+SELECT * FROM Scott.EMP e;
+
+INSERT INTO scott.dept
+        VALUES(60,'Logistica','PORTO');
+COMMIT;
+ROLLBACK;
+PRINT @@TRANCOUNT;
+
+-- 	2. READ COMMITTED com LOCK 					
+SET TRANSACTION ISOLATION LEVEL READ COMMITTED;		
+
+SELECT * FROM Scott.DEPT d;
+
+INSERT INTO scott.dept
+        VALUES(60,'Logistica','PORTO');
+
+-- 2.1. Hint NoLOCK
+SELECT * FROM scott.dept WITH (NOLOCK) ;
+
+SELECT * FROM Scott.EMP e JOIN
+	Scott.DEPT d WITH (NOLOCK) ON e.DEPTNO = d.DEPTNO;
+
+-- 	3. REPEATABLE READ
+SET TRANSACTION ISOLATION LEVEL REPEATABLE READ;
+
+UPDATE Scott.DEPT  
+	SET DNAME = 'IT'
+	WHERE DEPTNO = 50;
+
+COMMIT;
+SELECT @@TRANCOUNT;
+ROLLBACK;
+
+-- 	4. SERIALIZED TRANSACTION
+SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;	
+
+SELECT * FROM Scott.DEPT d;
+
+INSERT INTO scott.dept
+        VALUES(50,'TI','Lisboa');
