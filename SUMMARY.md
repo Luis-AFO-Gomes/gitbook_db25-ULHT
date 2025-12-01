@@ -1,27 +1,22 @@
-# Summary
+# Table of contents
 
 * [Apresentação do módulo](README.md)
-
-* Parte I – Fundamentos de SQL (DML)
+* [Parte I – Fundamentos de SQL (DML)](parte-i-fundamentos-de-sql-dml/README.md)
   * [01 – Introdução ao SQL e DML básico](01-introducao-dml-basico.md)
   * [02 – Operações de linha: texto, datas e números](02-operacoes-linha-funcoes.md)
   * [03 – Filtros horizontais com WHERE](03-filtros-where.md)
   * [04 – Agregação e funções de grupo](04-agregacao-group-by.md)
-
-* Parte II – Definição de dados e integridade (DDL)
+* [Parte II – Definição de dados e integridade (DDL)](parte-ii-definicao-de-dados-e-integridade-ddl/README.md)
   * [05 – Criar tabelas e tipos de dados](05-ddl-create-table.md)
   * [06 – Views, índices e constraints de qualidade](06-views-indices-constraints.md)
   * [07 – Relações e integridade referencial com Foreign Keys](07-relacoes-foreign-keys.md)
-
-* Parte III – Operadores relacionais e subqueries
+* [Parte III – Operadores relacionais e subqueries](parte-iii-operadores-relacionais-e-subqueries/README.md)
   * [08 – Junções horizontais (JOIN)](08-joins-horizontais.md)
   * [09 – Subqueries, CTE e recursividade](09-subqueries-cte.md)
-
-* Parte IV – Transações e concorrência
+* [Parte IV – Transações e concorrência](parte-iv-transacoes-e-concorrencia/README.md)
   * [10 – Transações, ACID e níveis de isolamento](10-transacoes-isolamento.md)
   * [11 – Exemplos práticos de isolamento](11-isolamento-exemplos-praticos.md)
-
-* Parte V – Programação em SQL
+* [Parte V – Programação em SQL](parte-v-programacao-em-sql/README.md)
   * [12 – Variáveis e blocos de código](12-variaveis-blocos-codigo.md)
   * [13 – Condicionais, ciclos e cursores](13-condicionais-ciclos-cursores.md)
   * [14 – Stored procedures e funções](14-stored-procedures-funcoes.md)
